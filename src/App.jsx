@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import FoodList from './FoodList.jsx';
+import FoodDetails from './FoodDetails.jsx';
 
 const App = () => {
 
@@ -9,6 +10,7 @@ const App = () => {
 
       <Routes>
         <Route path='/' element={<FoodList />} />
+        <Route path='/foods/:id' element={<FoodDetails />} />
       </Routes>
     </>
   )
