@@ -1,14 +1,12 @@
-const { getAllFoods, getFoodById } = require('./db/foods.js');
+const { getAllFoods, getFoodById } = require('./db/foods.cjs');
 
-const client = require('./db/client.js');
+const client = require('./db/client.cjs');
 client.connect();
 
 const express = require('express');
 const app = express();
 
-app.get('/', (req, res, next) => {
-  res.send('WELCOME');
-});
+app.use(express.static('dist'));
 
 app.get('/api/v1/foods', async(req, res, next) => {
   try {
@@ -40,6 +38,7 @@ app.use((req, res, next) => {
 });
 
 app.use((err, req, res, next) => {
+  console.log(err);
   res.status(err.status).send(err.message);
 });
 
