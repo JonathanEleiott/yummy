@@ -1,5 +1,5 @@
-const client = require('./client.js');
-const { createFood } = require('./foods.js');
+const client = require('./client.cjs');
+const { createFood } = require('./foods.cjs');
 
 const dropTables = async() => {
   try {
