@@ -1,29 +1,15 @@
-import { useEffect, useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import FoodList from './FoodList.jsx';
 
 const App = () => {
-  const [allFoods, setAllFoods] = useState([]);
 
-  useEffect(() => {
-    const getAllFoods = async() => {
-      const response = await fetch('/api/v1/foods');
-      const retrievedFoods = await response.json();
-      setAllFoods(retrievedFoods);
-    }
-    
-    getAllFoods();
-  }, []);
-  
   return (
     <>
       <h1>Yummy</h1>
 
-      <ol>
-      {
-        allFoods.map((singleFood) => {
-          return <li key={singleFood.id}>{singleFood.name}</li>
-        })
-      }
-      </ol>
+      <Routes>
+        <Route path='/' element={<FoodList />} />
+      </Routes>
     </>
   )
 }
