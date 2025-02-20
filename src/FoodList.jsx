@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const FoodList = () => {
   const [allFoods, setAllFoods] = useState([]);
@@ -12,13 +13,12 @@ const FoodList = () => {
     
     getAllFoods();
   }, []);
-  
 
   return (
     <ol>
     {
       allFoods.map((singleFood) => {
-        return <li key={singleFood.id}>{singleFood.name}</li>
+        return <Link key={singleFood.id} to={`/foods/${singleFood.id}`} >{singleFood.name}</Link>
       })
     }
     </ol>
