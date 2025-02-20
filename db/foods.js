@@ -11,6 +11,33 @@ const createFood = async(foodName, foodCost, foodDescription, foodIngredients) =
   }
 }
 
+const getAllFoods = async() => {
+  try {
+    const { rows: retrievedFoods } = await client.query(`
+      SELECT * FROM foods;
+    `);
+
+    return retrievedFoods;
+  } catch(err) {
+    console.log(err);
+  }
+}
+
+const getFoodById = async(foodId) => {
+  try {
+    const { rows } = await client.query(`
+      SELECT * FROM foods WHERE id=${foodId};
+    `);
+
+    const foodItem = rows[0];
+    return foodItem;
+  } catch(err) {
+    console.log(err);
+  }
+}
+
 module.exports = {
-  createFood
+  createFood,
+  getAllFoods,
+  getFoodById
 }
