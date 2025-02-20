@@ -1,4 +1,5 @@
 const client = require('./client.js');
+const { createFood } = require('./foods.js');
 
 const dropTables = async() => {
   try {
@@ -37,6 +38,13 @@ const syncAndSeed = async() => {
   console.log(`ADDING TABLES`);
   await createTables();
   console.log('TABLES ADDED');
+
+  console.log('CREATING FOODS');
+  await createFood('Carrot Cake', 100, 'Many many carrots. No bunnies.', 'carrots, cake');
+  await createFood('Banananan Bread', 333, 'Many much bananas. No monkeys.', 'bananas, bread');
+  await createFood('Cwoisaaan', 1, 'French goodness.', 'flakiness, quality stuffs, much butter');
+  await createFood('Tiramisu', 222, 'Coffee flavored cake', 'coffee, lady fingers');
+  console.log('FOODS CREATED');
 
   await client.end();
   console.log('DISCONNECTED FROM THE DB')
